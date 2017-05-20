@@ -11,15 +11,6 @@
         <!-- bootstrap -->
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <script>
-function on_yes() {
-    alert('yes');
-}
-
-function on_no() {
-    alert('no');
-}
-        </script>
     </head>
     <body>
         <div class="col-sm-12">
@@ -41,6 +32,9 @@ function on_no() {
                 </tr>
             </table>
         </div>
+        <div class="col-sm-12">
+            <span id="_question"></span>
+        </div>
         <div>
             <button class='btn' onclick="on_yes()">YES</button>
             <button class='btn' onclick="on_no()">NO</button>
@@ -50,5 +44,35 @@ function on_no() {
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="node_modules/bootstrap/dist//js/bootstrap.min.js"></script>
+        <script>
+var qidx = 0;
+var questions = [
+    {'q': 'press yes'},
+    {'q': 'press no'},
+    {'q': 'done!'},
+];
+
+function on_yes() {
+    alert('yes');
+    nextQuestion();
+}
+
+function on_no() {
+    alert('no');
+    nextQuestion();
+}
+
+$(function () {
+    nextQuestion();
+});
+
+function nextQuestion() {
+    console.log('next question');
+    if (questions.length <= qidx)
+        return;
+
+    $('#_question').text(questions[qidx++].q);
+}
+        </script>
     </body>
 </html>
