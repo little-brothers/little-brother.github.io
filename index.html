@@ -1,78 +1,25 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" contnet="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags must come first in the head; any other head must come after these tags -->
-
-        <title>Little Brother</title>
-
-        <!-- bootstrap -->
-        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    </head>
-    <body>
-        <div class="col-sm-12">
-            <table class="col-sm-12">
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-sm-12">
-            <span id="_question"></span>
-        </div>
-        <div>
-            <button class='btn' onclick="on_yes()">YES</button>
-            <button class='btn' onclick="on_no()">NO</button>
-        </div>
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="node_modules/bootstrap/dist//js/bootstrap.min.js"></script>
-        <script>
-var qidx = 0;
-var questions = [
-    {'q': 'press yes'},
-    {'q': 'press no'},
-    {'q': 'done!'},
-];
-
-function on_yes() {
-    alert('yes');
-    nextQuestion();
-}
-
-function on_no() {
-    alert('no');
-    nextQuestion();
-}
-
-$(function () {
-    nextQuestion();
-});
-
-function nextQuestion() {
-    console.log('next question');
-    if (questions.length <= qidx)
-        return;
-
-    $('#_question').text(questions[qidx++].q);
-}
-        </script>
-    </body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | littlebrother_neo</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webgl.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">littlebrother_neo</div>
+      </div>
+    </div>
+  </body>
 </html>
